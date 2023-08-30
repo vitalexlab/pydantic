@@ -32,3 +32,5 @@ try:
     Response[int](data='value')
 except ValidationError as ve:
     print(ve)
+
+'https://docs.pydantic.dev/latest/usage/models/'
