@@ -32,5 +32,18 @@ try:
     Response[int](data='value')
 except ValidationError as ve:
     print(ve)
+finally:
 
-'https://docs.pydantic.dev/latest/usage/models/'
+    TypeX = TypeVar('TypeX')
+
+
+    class BaseClass(BaseModel, Generic[TypeX]):
+        X: TypeX
+
+
+    class ChildClass(BaseClass[TypeX], Generic[TypeX]):
+        # !!!!! Inherits from Generic[TypeX]
+        pass
+
+    print(ChildClass[int](X=1))
+    #> X=1
